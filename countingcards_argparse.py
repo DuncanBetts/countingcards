@@ -1,12 +1,17 @@
 # argparse usage pattern inspired by:
 # https://github.com/dbader/photosorter/blob/master/sorter.py
 
-from argparse import ArgumentParser
+from argparse import ArgumentParser, RawDescriptionHelpFormatter
 import sys
 
 
 def parse_args(argv):
-    parser = ArgumentParser()
+    parser = ArgumentParser(formatter_class=RawDescriptionHelpFormatter,
+                            description="--------------------------------------------------\n"
+                            "Keeps track of Lil's hand, round by round.\n"
+                            "http://www.puzzlenode.com/puzzles/5-counting-cards\n"
+                            "--------------------------------------------------"
+                            )
 
     parser.add_argument('inputfile',
                         help="File containing input")
