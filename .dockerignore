@@ -1,0 +1,10 @@
+__pycache__
+.git
+.cache
+*.pyc
+.gitignore
+TODO.txt
+tags
+README.md
+Dockerfile.test
+docker-compose.test.yml

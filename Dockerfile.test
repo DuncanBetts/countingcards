@@ -1,12 +1,20 @@
 FROM pypy:3-5.8.0
 
+ENV CODE_DIR /code
+RUN mkdir -p $CODE_DIR
+
+WORKDIR $CODE_DIR
+
 # Application setup
 COPY requirements-to-freeze.txt requirements-to-freeze.txt
-CMD pip install -r requirements-to-freeze.txt
+RUN pip install -r requirements-to-freeze.txt
 
+# Copy code and tests
 COPY . .
 
+# Run tests
 CMD pytest --junitxml=/data/test_report.xml \
-           --cov-report xml:/data/coverage.xml
-
-CMD pylint > pylint.log
+           --cov-report xml:/data/coverage.xml \
+    && pylint $(find . -maxdepth 4 -name "*.py") \
+              --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" \
+              > pylint.log
