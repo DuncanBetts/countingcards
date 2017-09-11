@@ -4,7 +4,7 @@ FROM pypy:3-5.8.0
 COPY requirements-to-freeze.txt requirements-to-freeze.txt
 CMD pip install -r requirements-to-freeze.txt
 
-COPY . .  # Copy source code with all the tests.
+COPY . .
 
 CMD pytest --junitxml=/data/test_report.xml \
            --cov-report xml:/data/coverage.xml
