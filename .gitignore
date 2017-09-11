@@ -1,5 +1,6 @@
 __pycache__
 .cache
+.git
 tags
 requirements-to-freeze.txt
 TODO.txt
