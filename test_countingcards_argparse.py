@@ -30,7 +30,7 @@ def test_parse_blank_input(capsys):
         parse()
     assert excinfo.value.code == 2
     out, err = capsys.readouterr()
-    assert 'too few arguments' in err
+    assert 'the following arguments are required' in err
     assert out == ''
 
 
@@ -44,7 +44,7 @@ def test_parse_blank_input_and_provided_output(capsys):
         parse("--outputfile {}".format(outputfile))
     assert excinfo.value.code == 2
     out, err = capsys.readouterr()
-    assert 'too few arguments' in err
+    assert 'the following arguments are required' in err
     assert out == ''
 
 def test_parse_input_and_output():
