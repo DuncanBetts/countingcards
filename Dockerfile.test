@@ -12,11 +12,9 @@ RUN pip install -r requirements-to-freeze.txt
 # Copy code and tests
 COPY . .
 
-CMD sh
-
 # Run tests
-# CMD pytest --junitxml=/data/test_report.xml \
-#            --cov --cov-report xml:/data/coverage.xml \
-#     && pylint $(find . -maxdepth 4 -name "*.py") \
-#               --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" \
-#               > /data/pylint.log
+CMD pytest --junitxml=/data/test_report.xml \
+           --cov --cov-report xml:/data/coverage.xml \
+    && pylint $(find . -maxdepth 4 -name "*.py") \
+              --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" \
+              > /data/pylint.log
