@@ -1,5 +1,6 @@
-# argparse usage pattern inspired by:
+# Inspired by:
 # https://github.com/dbader/photosorter/blob/master/sorter.py
+# https://github.com/dmerejkowsky/docopt-challenge
 
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
 import sys
@@ -14,28 +15,32 @@ def parse_args(argv):
                             )
 
     parser.add_argument('inputfile',
-                        help="File containing input")
+                        help=("File containing input. "
+                              "Must be in current working directory."))
 
-    parser.add_argument('--outputfile',
-                        required=False,
+    parser.add_argument('-n', '--num-of-players',
+                        default=4,
+                        dest='playercount',
+                        help="Number of players.")
+
+    parser.add_argument('-p', '--your-player',
+                        default='Rocky',
+                        dest='mainplayer',
+                        help="Your player name.")
+
+    parser.add_argument('-c', '--name-of-colluder',
+                        default='Lil',
+                        dest='colluder',
+                        help="Player you are colluding with.")
+
+    parser.add_argument('-o', '--outputfile',
                         default="countingcards_output.txt",
-                        help="File to send output to")
+                        help=("Filename to save output. "
+                              "Will be written to current working directory."))
 
     args = parser.parse_args(argv)
     return args
 
 
-def run(inputfile, outputfile):
-    pass
-    # call countingcards
-
-
-def main(argv):
-    args = parse_args(argv)
-    run(args.inputfile, args.outputfile)
-    return 0
-
-
 if __name__ == '__main__':
     args = parse_args(sys.argv[1:])
-    main(args)

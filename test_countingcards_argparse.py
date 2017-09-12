@@ -1,5 +1,5 @@
 """
-Unit tests for countingcards.py
+Unit tests for countingcards_argparse.py
 
 Run with:
 
@@ -47,9 +47,11 @@ def test_parse_blank_input_and_provided_output(capsys):
     assert 'the following arguments are required' in err
     assert out == ''
 
+
 def test_parse_input_and_output():
     """
-    Ensure both an input and output filename are captured when passed at runtime.
+    Ensure both an input and output filename
+    are captured when passed at runtime.
     """
     inputfile = "foo.txt"
     outputfile = "bar.txt"
