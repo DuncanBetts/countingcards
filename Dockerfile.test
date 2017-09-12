@@ -14,7 +14,8 @@ COPY . .
 
 # Run tests
 CMD pytest --junitxml=/data/test_report.xml \
-           --cov --cov-report xml:/data/coverage.xml \
+           --cov --cov-config .coveragerc \
+           --cov-report xml:/data/coverage.xml \
     && pylint $(find . -maxdepth 4 -name "*.py") \
               --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" \
               > /data/pylint.log
