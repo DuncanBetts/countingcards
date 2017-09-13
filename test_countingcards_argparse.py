@@ -2,8 +2,7 @@
 Unit tests for countingcards_argparse.py
 
 Run with:
-
-$ pytest
+$ pytest test_countingcards_argparse.py
 
 """
 

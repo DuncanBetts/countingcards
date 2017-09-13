@@ -18,7 +18,7 @@ def parse_args(argv):
                         help=("File containing input. "
                               "Must be in current working directory."))
 
-    parser.add_argument('-n', '--num-of-players',
+    parser.add_argument('-np', '--num-of-players',
                         default=4,
                         dest='playercount',
                         help="Number of players.")
